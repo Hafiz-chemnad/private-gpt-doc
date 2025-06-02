@@ -1,0 +1,157 @@
+/* --- Color Palette (CSS Variables) --- */
+:root {
+    /* UAE Flag Inspired Colors */
+    --uae-red: #DD0000;      /* Vibrant Red */
+    --uae-green: #006600;    /* Deep, rich Green */
+    --uae-white: #FFFFFF;    /* Pure White */
+    --uae-black: #141414;    /* Soft Black for text and dark elements */
+
+    /* Neutrals based on UAE White/Black for subtle distinctions */
+    --uae-light-grey: #F5F5F5; /* Very light grey for backgrounds */
+    --uae-medium-grey: #E0E0E0; /* For subtle borders/dividers */
+    --uae-dark-grey: #777777; /* For secondary text/less prominent elements */
+
+    /* Mapping to existing variable names for consistent styling */
+    --primary-color: var(--uae-green); /* Main action color (Green) */
+    --primary-dark: #004D00; /* Darker shade of primary green */
+    --secondary-color: var(--uae-red); /* Accent/Alert color (Red) */
+
+    --background-light: var(--uae-dark-grey); /* Overall page background */
+    --text-color-dark: var(--uae-black); /* Main text color */
+    --text-color-light: var(--uae-dark-grey); /* Lighter grey for secondary text */
+    --border-color: var(--uae-medium-grey); /* Light border */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Subtle shadow */
+
+    /* Status colors - adjusted to fit theme */
+    --error-color: var(--uae-red); /* Use the accent red for errors */
+    --success-color: var(--uae-green); /* Use the primary green for success */
+    --info-color: #17A2B8; /* Keeping a standard info blue, or could be a soft grey */
+
+    --font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light); /* Light grey background */
+    color: var(--text-color-dark); /* Soft black text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    background-color: var(--uae-white); /* Pure white dialogue box */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color); /* Subtle border for definition */
+}
+
+.login-container h1 {
+    color: var(--primary-dark); /* Darker green for heading */
+    margin-bottom: 30px;
+    font-size: 2.2em; /* Slightly larger for impact */
+    font-weight: 700; /* Bolder heading */
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color-dark);
+}
+
+.form-group input {
+    width: calc(100% - 24px);
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color); /* Green focus border */
+    box-shadow: 0 0 0 3px rgba(0, 102, 0, 0.2); /* Green glow on focus */
+    outline: none;
+}
+
+#login-button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color); /* Green login button */
+    color: white;
+    border: none;
+    border-radius: 25px; /* Fully rounded button */
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-weight: 600; /* Bolder text for button */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+}
+
+#login-button:hover {
+    background-color: var(--primary-dark); /* Darker green on hover */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+}
+
+#login-button:active {
+    transform: translateY(0); /* Press down effect */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#login-status {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: none; /* Hidden by default */
+}
+
+.status-error {
+    background-color: #F8D7DA; /* Light red background */
+    color: var(--error-color); /* Red text */
+    border: 1px solid var(--error-color);
+}
+
+.status-success {
+    background-color: #D4EDDA; /* Light green background */
+    color: var(--success-color); /* Green text */
+    border: 1px solid var(--success-color);
+}
+
+.status-info {
+    background-color: #E2F0F7; /* Light cyan/blue background */
+    color: var(--info-color); /* Cyan/blue text */
+    border: 1px solid var(--info-color);
+}
+
+.back-to-chat {
+    margin-top: 25px;
+    font-size: 0.9em;
+}
+
+.back-to-chat a {
+    color: var(--primary-color); /* Green link */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.back-to-chat a:hover {
+    color: var(--primary-dark); /* Darker green on hover */
+    text-decoration: underline;
+}

@@ -1,0 +1,628 @@
+/* --- Color Palette (CSS Variables) --- */
+:root {
+    --primary-color: #4A90E2; /* A modern blue */
+    --primary-dark: #357ABD;
+    --secondary-color: #50B498; /* A complementary green */
+    --background-light: #F8F9FA; /* Very light grey */
+    --background-dark: #E9ECEF; /* Slightly darker grey */
+    --text-color-dark: #343A40; /* Dark grey for text */
+    --text-color-light: #6C757D; /* Lighter grey for secondary text */
+    --border-color: #DEE2E6; /* Light border */
+    --shadow-color: rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    --success-color: #28A745;
+    --error-color: #DC3545;
+    --info-color: #17A2B8;
+}
+
+/* --- General & App Container Styling --- */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color-dark);
+    line-height: 1.6;
+    background-color: var(--background-light);
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh; /* Use min-height to ensure it fills screen, but allows content to extend */
+    overflow: hidden; /* Prevent overall body scroll */
+}
+
+/* --- Chat Interface Styling (for index.html) --- */
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    border-radius: 12px;
+    margin: 25px;
+    position: relative;
+    overflow: hidden; /* Ensure chat window content doesn't spill */
+}
+
+.full-width-chat {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 20px 5%; /* Relative padding */
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.main-title {
+    text-align: center;
+    color: var(--primary-dark);
+    margin-bottom: 25px;
+    font-size: 2.2em;
+    font-weight: 600;
+}
+
+.chat-window {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: var(--background-light);
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth; /* Smooth scrolling for new messages */
+}
+
+.message {
+    max-width: 75%;
+    padding: 12px 18px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: var(--primary-color);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: var(--background-dark);
+    color: var(--text-color-dark);
+    border-bottom-left-radius: 4px;
+}
+
+.initial-message {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-color-light);
+    background-color: transparent;
+    box-shadow: none;
+    align-self: center; /* Center the initial message */
+    margin-top: 10px;
+}
+
+.source-documents {
+    background-color: rgba(0, 0, 0, 0.05); /* Slightly transparent dark for bot messages */
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 0.85em;
+    color: var(--text-color-light);
+    border-top: 1px dashed var(--border-color);
+}
+
+.source-documents h4 {
+    margin-top: 5px;
+    margin-bottom: 8px;
+    color: var(--text-color-dark);
+    font-size: 1em;
+}
+
+.source-documents p {
+    margin-bottom: 5px;
+}
+
+.input-area {
+    display: flex;
+    align-items: flex-end; /* Align input and button at bottom */
+    gap: 15px;
+    margin-top: 15px;
+}
+
+#user-input {
+    flex: 1;
+    padding: 14px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    font-size: 1.05em;
+    resize: none;
+    overflow: hidden;
+    min-height: 48px;
+    max-height: 180px; /* Allow more lines */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#user-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); /* Primary color shadow */
+    outline: none;
+}
+
+#send-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    min-width: 100px; /* Ensure button has minimum width */
+    justify-content: center;
+}
+
+#send-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+#send-button:active {
+    transform: translateY(0);
+}
+
+#send-button:disabled {
+    background-color: #AABEE0; /* Lighter shade of primary */
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.status-message {
+    margin-top: 15px;
+    font-size: 0.95em;
+    text-align: center;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.status-message[style*="color: rgb(217, 83, 79)"] { /* Error */
+    background-color: #F8D7DA; /* Light red background */
+    color: var(--error-color) !important;
+    border: 1px solid var(--error-color);
+}
+.status-message[style*="color: rgb(92, 184, 92)"] { /* Success */
+    background-color: #D4EDDA; /* Light green background */
+    color: var(--success-color) !important;
+    border: 1px solid var(--success-color);
+}
+.status-message[style*="color: rgb(85, 85, 85)"] { /* Info/Default */
+    background-color: #E2F0F7; /* Light blue background */
+    color: var(--info-color) !important;
+    border: 1px solid var(--info-color);
+}
+
+
+.admin-link-note {
+    font-size: 0.9em;
+    color: var(--text-color-light);
+    margin-top: 25px;
+    text-align: center;
+}
+.admin-link-note a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+.admin-link-note a:hover {
+    text-decoration: underline;
+}
+
+/* --- Admin Panel Styling (for admin.html) --- */
+.admin-layout {
+    display: flex;
+    flex-direction: row; /* Sidebar and main content side-by-side */
+    background-color: var(--background-dark); /* Slightly darker background for overall admin layout */
+}
+
+/* Admin Sidebar */
+.admin-sidebar {
+    width: 280px; /* Fixed width for the sidebar */
+    background-color: var(--text-color-dark); /* Dark background */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15); /* Stronger shadow for sidebar */
+    padding: 20px 0; /* Vertical padding */
+    box-sizing: border-box;
+}
+
+.sidebar-header {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar-header h2 {
+    font-size: 1.8em;
+    margin: 0;
+    font-weight: 500;
+    color: white;
+}
+
+.sidebar-header h2 i {
+    margin-right: 10px;
+    color: var(--secondary-color); /* Complementary color for icons */
+}
+
+.admin-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.admin-nav li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 1.05em;
+}
+
+.admin-nav li a i {
+    margin-right: 12px;
+    font-size: 1.2em;
+}
+
+.admin-nav li a:hover {
+    background-color: rgba(255, 255, 255, 0.08); /* Light hover effect */
+    color: white;
+}
+
+.admin-nav li a.active {
+    background-color: var(--primary-color); /* Active link background */
+    color: white;
+    font-weight: bold;
+    border-left: 5px solid var(--secondary-color); /* Highlight active link */
+    padding-left: 15px; /* Adjust padding due to border */
+}
+
+.sidebar-footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+    padding: 20px;
+    text-align: center;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Admin Main Content */
+.admin-main-content {
+    flex: 1; /* Takes remaining space */
+    padding: 40px;
+    overflow-y: auto; /* Enable scrolling for main content */
+    background-color: var(--background-light);
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.admin-header h1 {
+    font-size: 2.8em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.admin-header h1 i {
+    margin-right: 15px;
+    color: var(--secondary-color);
+}
+
+.admin-header p {
+    font-size: 1.1em;
+    color: var(--text-color-light);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.admin-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Responsive grid for cards */
+    gap: 30px; /* Space between cards */
+    margin-bottom: 40px;
+}
+
+.admin-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* For inner elements */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-title {
+    font-size: 1.8em;
+    color: var(--primary-dark);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.card-title i {
+    margin-right: 12px;
+    color: var(--secondary-color);
+}
+
+.card-description {
+    font-size: 0.95em;
+    color: var(--text-color-light);
+    margin-bottom: 25px;
+}
+
+/* Upload Area specific styles within admin card */
+.upload-card .upload-area {
+    margin-bottom: 0; /* Remove default margin from old sidebar styling */
+    text-align: center;
+    border: 2px dashed var(--border-color);
+    border-radius: 10px;
+    padding: 30px;
+    transition: border-color 0.3s ease;
+}
+
+.upload-card .upload-area:hover {
+    border-color: var(--primary-color);
+}
+
+.upload-button {
+    display: inline-flex; /* Use inline-flex to center content */
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-color); /* Green for upload */
+    color: white;
+    padding: 14px 30px;
+    border-radius: 30px; /* Fully rounded button */
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    gap: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Space below button */
+}
+
+.upload-button i {
+    font-size: 1.3em;
+}
+
+.upload-button:hover {
+    background-color: #3e9e7b; /* Darker green */
+    transform: translateY(-2px);
+}
+
+.upload-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#file-upload {
+    display: none; /* Keep the default file input hidden */
+}
+
+/* Status messages within admin cards */
+.admin-card .status-message {
+    margin-top: 15px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: 500;
+    background-color: var(--background-light); /* Override general status bg for cards */
+    border: 1px solid var(--border-color);
+}
+
+/* File List specific styles within admin card */
+.files-card .uploaded-files-list {
+    margin-top: 15px;
+    max-height: 400px; /* Fixed height for scrolling */
+    overflow-y: auto;
+    padding-right: 10px; /* Space for scrollbar */
+}
+
+.files-card .uploaded-files-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.files-card .uploaded-files-list li {
+    background-color: var(--background-light);
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95em;
+    word-wrap: break-word;
+    word-break: break-all;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+}
+
+.files-card .uploaded-files-list li:hover {
+    background-color: var(--background-dark);
+}
+
+.files-card .uploaded-files-list li i {
+    font-size: 1.1em;
+    color: var(--text-color-light);
+}
+
+.ingestion-status-text {
+    font-weight: bold;
+    margin-left: auto; /* Push status to the right */
+    white-space: nowrap; /* Keep status on one line */
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    color: white; /* Default text color for badges */
+}
+
+/* Specific colors for ingestion status text */
+.ingestion-status-text[style*="rgb(92, 184, 92)"] { /* Success - Green */
+    background-color: var(--success-color);
+}
+.ingestion-status-text[style*="rgb(217, 83, 79)"] { /* Error - Red */
+    background-color: var(--error-color);
+}
+.ingestion-status-text[style*="rgb(85, 85, 85)"] { /* Info/Pending - Grey/Blue */
+    background-color: var(--info-color); /* Use info color for pending */
+}
+
+.no-files-message {
+    text-align: center;
+    color: var(--text-color-light);
+    padding: 20px;
+    font-style: italic;
+    background-color: var(--background-dark);
+    border-radius: 8px;
+}
+
+.admin-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9em;
+    color: var(--text-color-light);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .admin-layout {
+        flex-direction: column; /* Stack sidebar and main content vertically */
+    }
+
+    .admin-sidebar {
+        width: 100%; /* Full width sidebar */
+        flex-direction: row; /* Make sidebar items horizontal */
+        padding: 15px 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .sidebar-header {
+        display: none; /* Hide header on small screens to save space */
+    }
+    .admin-nav ul {
+        display: flex;
+        justify-content: space-around; /* Distribute items evenly */
+        width: 100%;
+        margin: 0;
+    }
+    .admin-nav li a {
+        padding: 10px 15px;
+        justify-content: center; /* Center text and icon */
+        font-size: 0.9em;
+        border-left: none !important; /* Remove side border */
+        border-bottom: 3px solid transparent; /* Use bottom border for active */
+    }
+    .admin-nav li a.active {
+        border-bottom-color: var(--secondary-color) !important;
+        border-left: none; /* Ensure no left border */
+        padding-left: 15px; /* Reset padding */
+    }
+    .admin-nav li a i {
+        margin-right: 5px; /* Smaller gap */
+    }
+    .sidebar-footer {
+        display: none; /* Hide footer on smaller screens */
+    }
+
+    .admin-main-content {
+        padding: 25px; /* Smaller padding */
+    }
+
+    .admin-header h1 {
+        font-size: 2.2em;
+    }
+
+    .admin-cards-grid {
+        grid-template-columns: 1fr; /* Stack cards vertically on smaller screens */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .chat-area, .admin-main-content {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 15px;
+    }
+    .main-title, .admin-header h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+    .admin-header p {
+        font-size: 1em;
+    }
+    .input-area {
+        flex-direction: column;
+        gap: 10px;
+    }
+    #user-input {
+        width: 100%;
+    }
+    #send-button {
+        width: 100%;
+        padding: 12px;
+    }
+    .message {
+        max-width: 90%;
+        padding: 10px 15px;
+    }
+    .admin-nav li a {
+        flex-direction: column; /* Stack icon and text */
+        gap: 2px;
+        font-size: 0.8em;
+    }
+    .admin-nav li a i {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    .admin-card {
+        padding: 20px;
+    }
+    .card-title {
+        font-size: 1.5em;
+    }
+    .upload-button {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}

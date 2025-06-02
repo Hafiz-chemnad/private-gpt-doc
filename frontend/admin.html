@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrivateGPT Admin Panel</title>
+    <link rel="stylesheet" href="admin_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container admin-layout">
+        <div class="admin-sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-users-cog"></i> Admin Nav</h2>
+            </div>
+            <nav class="admin-nav">
+                <ul>
+                    <li><a href="admin.html" class="active"><i class="fas fa-cloud-upload-alt"></i> Document Upload</a></li>
+                    <li><a href="index.html"><i class="fas fa-comments"></i> Chat Interface</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logout-button" class="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                <p>&copy; 2025 PrivateGPT</p>
+            </div>
+        </div>
+
+        <div class="admin-main-content">
+            <header class="admin-header">
+                <h1><i class="fas fa-tachometer-alt"></i> PrivateGPT Admin Dashboard</h1>
+                <p>Manage documents, monitor ingestion, and control your PrivateGPT instance.</p>
+            </header>
+
+            <div class="admin-cards-grid">
+                <div class="admin-card upload-card">
+                    <h2 class="card-title"><i class="fas fa-file-upload"></i> Upload New Documents</h2>
+                    <p class="card-description">Select files to upload for ingestion into the knowledge base.</p>
+                    <div class="upload-area">
+                        <label for="file-upload" class="upload-label">
+                            <i class="fas fa-folder-open"></i> Choose File(s)
+                        </label>
+                        <input type="file" id="file-upload" multiple
+                               accept=".pdf,.txt,.doc,.docx,.md,.json,.html,.htm,.epub,.ppt,.pptx,.csv,.odt,.enex">
+                        
+                        <p class="drag-drop-text">or drag and drop files here</p>
+                        <button id="upload-button" class="action-button upload-trigger-button" disabled><i class="fas fa-upload"></i> Upload Selected</button>
+
+                        <div id="upload-status" class="status-message"></div>
+                        <div id="ingestion-status" class="status-message"></div>
+                    </div>
+                </div>
+
+                <div class="admin-card files-card">
+                    <h2 class="card-title"><i class="fas fa-list-alt"></i> Ingested Documents</h2>
+                    <p class="card-description">List of documents currently in your knowledge base.</p>
+                    <div class="uploaded-files-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>File Name</th>
+                                    <th>Status</th>
+                                    <th>Size</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="file-list-tbody">
+                                <tr id="no-files-row">
+                                    <td colspan="4" class="no-files-message">No documents uploaded yet. Start by using the upload section.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <footer class="admin-footer">
+                <p>Admin panel status: Operational</p>
+            </footer>
+        </div>
+    </div>
+    
+    <script src="admin_script.js"></script> 
+</body>
+</html>

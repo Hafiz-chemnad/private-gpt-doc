@@ -1,0 +1,25 @@
+# Python virtual environment
+venv/
+.venv/
+
+# Project-specific generated files
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Hugging Face models cache (large files, downloaded on server)
+.cache/
+hf_cache/
+
+# ChromaDB persistence directory (recreated on server)
+db/
+
+# Source documents directory (will be empty initially, re-upload on server)
+source_documents/
+
+# Logs
+*.log
+
+# Operating System files
+.DS_Store
+Thumbs.db

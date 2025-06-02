@@ -1,0 +1,698 @@
+/* --- Color Palette (CSS Variables) --- */
+:root {
+    /* UAE Flag Inspired Colors */
+    --uae-red: #DD0000;      /* Vibrant Red */
+    --uae-green: #006600;    /* Deep, rich Green */
+    --uae-white: #FFFFFF;    /* Pure White */
+    --uae-black: #222222;    /* Soft Black for text and dark elements */
+
+    /* Neutrals based on UAE White/Black for subtle distinctions */
+    --uae-light-grey: #F5F5F5; /* Very light grey for backgrounds */
+    --uae-medium-grey: #E0E0E0; /* For subtle borders/dividers */
+    --uae-dark-grey: #777777; /* For secondary text/less prominent elements */
+
+
+    /* Mapping to existing variable names for consistent styling */
+    --primary-color: var(--uae-green); /* Main action color (Green) */
+    --primary-dark: #004D00; /* Darker shade of primary green */
+    --secondary-color: var(--uae-red); /* Accent/Alert color (Red) */
+
+    --background-light: var(--uae-white); /* Main light background */
+    --background-dark: var(--uae-light-grey); /* Slightly darker background for sections */
+
+    --text-color-dark: var(--uae-black); /* Main text color */
+    --text-color-light: var(--uae-dark-grey); /* Secondary text color */
+    --border-color: var(--uae-medium-grey); /* Light border */
+    --shadow-color: rgba(0, 0, 0, 0.08); /* Subtle shadow */
+
+    /* Standard status colors - adjusted to fit theme */
+    --success-color: var(--uae-green); /* Use the primary green for success */
+    --error-color: var(--uae-red); /* Use the accent red for errors */
+    --info-color: #17A2B8; /* Keeping a standard info blue, or could be a soft grey */
+    --warning-color: #FFC107; /* Keeping a standard yellow for warnings/pending */
+}
+
+/* --- General & App Container Styling --- */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color-dark);
+    line-height: 1.6;
+    background-color: var(--background-light); /* Will be pure white */
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* --- Admin Panel Styling (for admin.html) --- */
+.admin-layout {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--background-dark); /* Will be light grey */
+    width: 100%;
+}
+
+/* Admin Sidebar */
+.admin-sidebar {
+    width: 280px;
+    background-color: var(--uae-black); /* Dark background (Black) */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.sidebar-header {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar-header h2 {
+    font-size: 1.8em;
+    margin: 0;
+    font-weight: 500;
+    color: white;
+}
+
+.sidebar-header h2 i {
+    margin-right: 10px;
+    color: var(--secondary-color); /* Red accent for icons */
+}
+
+.admin-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.admin-nav li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 1.05em;
+}
+
+.admin-nav li a i {
+    margin-right: 12px;
+    font-size: 1.2em;
+}
+
+.admin-nav li a:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+.admin-nav li a.active {
+    background-color: var(--primary-color); /* Green active link background */
+    color: white;
+    font-weight: bold;
+    border-left: 5px solid var(--secondary-color); /* Red highlight for active link */
+    padding-left: 15px;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* NEW: Logout Button Style */
+.logout-button {
+    background-color: var(--secondary-color); /* Red for logout */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    margin: 0 auto 10px auto;
+    max-width: 150px;
+}
+
+.logout-button i {
+    font-size: 1.1em;
+}
+
+.logout-button:hover {
+    background-color: #AA0000; /* Darker red */
+    transform: translateY(-2px);
+}
+
+.logout-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Admin Main Content */
+.admin-main-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    background-color: var(--background-light); /* Will be pure white */
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.admin-header h1 {
+    font-size: 2.8em;
+    color: var(--primary-color); /* Green for main header */
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.admin-header h1 i {
+    margin-right: 15px;
+    color: var(--secondary-color); /* Red for header icon */
+}
+
+.admin-header p {
+    font-size: 1.1em;
+    color: var(--text-color-light);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.admin-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.admin-card {
+    background-color: var(--uae-white); /* Cards will be white */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-title {
+    font-size: 1.8em;
+    color: var(--primary-dark); /* Darker green for card titles */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.card-title i {
+    margin-right: 12px;
+    color: var(--secondary-color); /* Red for card title icons */
+}
+
+.card-description {
+    font-size: 0.95em;
+    color: var(--text-color-light);
+    margin-bottom: 25px;
+}
+
+/* Upload Area specific styles within admin card */
+.upload-card .upload-area {
+    margin-bottom: 0;
+    text-align: center;
+    border: 2px dashed var(--border-color);
+    border-radius: 10px;
+    padding: 30px;
+    transition: border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+}
+
+.upload-card .upload-area.drag-over {
+    border-color: var(--primary-color); /* Green when dragging over */
+    background-color: rgba(0, 102, 0, 0.1); /* Light primary green background */
+    box-shadow: 0 0 15px rgba(0, 102, 0, 0.3);
+}
+
+.upload-card .upload-area:hover {
+    border-color: var(--primary-color);
+}
+
+/* Renamed from .upload-button to .upload-label for consistency with HTML */
+.upload-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color); /* Green for upload button */
+    color: white;
+    padding: 14px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    gap: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.upload-label i {
+    font-size: 1.3em;
+}
+
+.upload-label:hover {
+    background-color: var(--primary-dark); /* Darker green */
+    transform: translateY(-2px);
+}
+
+.upload-label:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#file-upload {
+    display: none;
+}
+
+/* NEW: Drag and Drop Text */
+.drag-drop-text {
+    font-size: 0.9em;
+    color: var(--text-color-light);
+    margin-bottom: 20px;
+}
+
+/* NEW: Explicit Upload Trigger Button */
+.upload-trigger-button {
+    background-color: var(--primary-color); /* Green for the main action */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.upload-trigger-button:hover:not(:disabled) {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.upload-trigger-button:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.upload-trigger-button:disabled {
+    background-color: var(--border-color);
+    color: var(--text-color-light);
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+}
+
+/* Status messages within admin cards */
+.admin-card .status-message {
+    margin-top: 15px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: 500;
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color);
+    display: none;
+}
+
+/* --- Improved File List Presentation (Table View) --- */
+.files-card .uploaded-files-list {
+    margin-top: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.files-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.95em;
+}
+
+.files-card th, .files-card td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.files-card th {
+    background-color: var(--background-dark);
+    color: var(--text-color-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.5px;
+}
+
+.files-card tbody tr:hover {
+    background-color: var(--background-dark);
+    transition: background-color 0.2s ease;
+}
+
+/* File Name Column */
+.files-card .file-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    word-break: break-all;
+}
+
+/* File Type Icons */
+.files-card .file-icon {
+    font-size: 1.2em;
+    color: var(--primary-color); /* Default icon color (Green) */
+}
+
+/* Specific icon colors for better visual distinction - adjusted to fit theme */
+.files-card .file-icon.pdf { color: var(--uae-red); } /* Red for PDF */
+.files-card .file-icon.doc, .files-card .file-icon.docx { color: #007BFF; } /* Keeping a standard blue for Word */
+.files-card .file-icon.txt { color: var(--uae-dark-grey); } /* Darker grey for Text */
+.files-card .file-icon.md { color: var(--uae-black); } /* Black for Markdown */
+.files-card .file-icon.json { color: var(--uae-green); } /* Green for JSON */
+.files-card .file-icon.html, .files-card .file-icon.htm { color: #E44D26; } /* Keeping orange for HTML */
+.files-card .file-icon.epub { color: #6F42C1; } /* Keeping purple for EPUB */
+.files-card .file-icon.ppt, .files-card .file-icon.pptx { color: #FFC107; } /* Keeping yellow for PowerPoint */
+.files-card .file-icon.csv { color: #20C997; } /* Keeping teal for CSV */
+.files-card .file-icon.odt { color: #FD7E14; } /* Keeping orange for ODT */
+.files-card .file-icon.enex { color: #17A2B8; } /* Keeping cyan for Evernote */
+
+
+/* Status Badges */
+.files-card .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.files-card .status-badge.pending {
+    background-color: var(--warning-color); /* Yellow */
+    color: var(--text-color-dark);
+}
+.files-card .status-badge.in_progress {
+    background-color: var(--info-color); /* Cyan/Blue */
+    color: white;
+}
+.files-card .status-badge.completed {
+    background-color: var(--success-color); /* Green */
+    color: white;
+}
+.files-card .status-badge.failed {
+    background-color: var(--error-color); /* Red */
+    color: white;
+}
+
+/* Progress Bar (for In Progress status) */
+.files-card .progress-container {
+    width: 100%;
+    background-color: var(--background-dark);
+    border-radius: 5px;
+    height: 8px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.files-card .progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--primary-color); /* Green progress bar */
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out;
+}
+
+.no-files-message {
+    text-align: center;
+    color: var(--text-color-light);
+    padding: 20px;
+    font-style: italic;
+    background-color: var(--background-dark);
+    border-radius: 8px;
+    grid-column: 1 / -1;
+}
+
+.admin-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9em;
+    color: var(--text-color-light);
+}
+
+/* --- New Styles for Delete Button --- */
+.delete-button {
+    background-color: var(--error-color); /* Red for delete */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.delete-button:hover {
+    background-color: #AA0000; /* Darker red */
+    transform: translateY(-1px);
+}
+
+.delete-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* --- New Styles for Confirmation Modal --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--uae-white); /* Modal background white */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    animation: fadeInScale 0.3s ease-out;
+}
+
+.modal-content p {
+    font-size: 1.1em;
+    color: var(--text-color-dark);
+    margin-bottom: 25px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.button-confirm-yes, .button-confirm-no {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button-confirm-yes {
+    background-color: var(--success-color); /* Green for Yes */
+    color: white;
+}
+
+.button-confirm-yes:hover {
+    background-color: #218838; /* Darker green */
+    transform: translateY(-1px);
+}
+
+.button-confirm-no {
+    background-color: var(--error-color); /* Red for No */
+    color: white;
+}
+
+.button-confirm-no:hover {
+    background-color: #AA0000; /* Darker red */
+    transform: translateY(-1px);
+}
+
+/* Keyframe animation for modal */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- Responsive Adjustments (for admin panel) --- */
+@media (max-width: 1024px) {
+    .admin-layout {
+        flex-direction: column;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        flex-direction: row;
+        padding: 15px 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        justify-content: space-between;
+        align-items: center;
+    }
+    .sidebar-header {
+        display: none;
+    }
+    .admin-nav ul {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin: 0;
+    }
+    .admin-nav li a {
+        padding: 10px 15px;
+        justify-content: center;
+        font-size: 0.9em;
+        border-left: none !important;
+        border-bottom: 3px solid transparent; /* Use bottom border for active */
+    }
+    .admin-nav li a.active {
+        border-bottom-color: var(--secondary-color) !important; /* Red highlight */
+        border-left: none;
+        padding-left: 15px;
+    }
+    .admin-nav li a i {
+        margin-right: 5px;
+    }
+    .sidebar-footer {
+        display: none;
+    }
+
+    .admin-main-content {
+        padding: 25px;
+    }
+
+    .admin-header h1 {
+        font-size: 2.2em;
+    }
+
+    .admin-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-main-content {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 15px;
+    }
+    .main-title, .admin-header h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+    .admin-header p {
+        font-size: 1em;
+    }
+    .admin-nav li a {
+        flex-direction: column;
+        gap: 2px;
+        font-size: 0.8em;
+    }
+    .admin-nav li a i {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    .admin-card {
+        padding: 20px;
+    }
+    .card-title {
+        font-size: 1.5em;
+    }
+    .upload-label {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+    .files-card th, .files-card td {
+        padding: 8px 10px;
+        font-size: 0.85em;
+    }
+    .files-card th:nth-child(3), .files-card td:nth-child(3) {
+        display: none;
+    }
+    .files-card th:nth-child(4), .files-card td:nth-child(4) {
+        display: none;
+    }
+}

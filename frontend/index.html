@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrivateGPT Chat Interface</title>
+    <link rel="stylesheet" href="chat_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="chat-main-panel">
+            <h1 class="main-title">PrivateGPT Chat</h1>
+            <div class="chat-window" id="chat-window">
+                <div class="message bot-message initial-message">
+                    <p>Hello! I'm your PrivateGPT assistant. Please ask me questions.</p>
+                </div>
+                <div class="loading-indicator" id="loading-indicator" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> Thinking...
+                </div>
+            </div>
+            
+            <div class="input-area">
+                <textarea id="user-input" placeholder="Ask a question..." rows="1"></textarea>
+                <button id="send-button"><i class="fas fa-paper-plane"></i> Send</button>
+            </div>
+            
+            <div id="query-status" class="status-message"></div>
+            
+            <div class="chat-actions">
+                <button id="new-chat-button" class="action-button"><i class="fas fa-plus-circle"></i> New Chat</button>
+                <button id="clear-chat-button" class="action-button secondary-button"><i class="fas fa-trash-alt"></i> Clear Chat</button>
+            </div>
+
+           
+        </div>
+
+        <div class="sources-sidebar" id="sources-sidebar">
+            <div class="sources-header">
+                <h3><i class="fas fa-book"></i> Source Documents</h3>
+                <button id="toggle-sources-button" class="toggle-button" title="Toggle Sources Panel">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="sources-list" id="sources-list">
+                <p class="no-sources-message">Sources for the AI's answer will appear here.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="chat_script.js"></script>
+</body>
+</html>
